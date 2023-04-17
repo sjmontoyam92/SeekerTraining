@@ -1,0 +1,20 @@
+# CREATE THE DATABASE
+CREATE DATABASE its_db;
+
+#CREATE THE TABLE
+CREATE TABLE its_db.users (
+  ID INT NOT NULL AUTO_INCREMENT,
+  username VARCHAR(255) NOT NULL,
+  password VARCHAR(255) NOT NULL,
+  createdAt TIMESTAMP DEFAULT CURRENT_TIMESTAMP,
+  updatedAt TIMESTAMP DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP,
+  PRIMARY KEY (ID)
+);
+
+#INSERT DUMMY DATA
+INSERT INTO its_db.users (username, password) VALUES
+  ('john_doe', 'password123'),
+  ('jane_smith', 'secret321'),
+  ('bob_johnson', '123456'),
+  ('mary_wilson', 'password123'),
+  ('jim_brown', 'mysecretpassword');
