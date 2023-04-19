@@ -20,7 +20,7 @@ public class KafkaProducerExample {
         Producer<String, String> producer = new KafkaProducer<>(props);
 
         // Send a test message to the Kafka topic
-        ProducerRecord<String, String> record = new ProducerRecord<>("test2", "IT TEST 5");
+        ProducerRecord<String, String> record = new ProducerRecord<>("test2", "IT TEST 17");
         producer.send(record);
 
         // Clean up resources
