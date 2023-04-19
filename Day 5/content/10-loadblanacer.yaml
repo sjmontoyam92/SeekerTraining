@@ -1,0 +1,37 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: 09-np
+
+spec:
+  selector:
+    matchLabels:
+      role: 10-lb
+
+  replicas: 2
+
+  template:
+    metadata:
+      labels:
+        role: 10-lb
+      
+    spec:
+      containers:
+      - name: 10-lb
+        image: gcr.io/google-samples/hello-app:1.0
+        ports:
+          - containerPort: 8080
+
+---
+apiVersion: v1
+kind: Service
+metadata:
+  name: lb-10
+
+spec:
+  type: LoadBalancer
+  ports:
+  - port: 8080
+    targetPort: 8080
+  selector:
+    role: 10-lb

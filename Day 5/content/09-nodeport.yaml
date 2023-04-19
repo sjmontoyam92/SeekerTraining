@@ -1,0 +1,38 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: 09-np
+
+spec:
+  selector:
+    matchLabels:
+      role: 09-np
+
+  replicas: 2
+
+  template:
+    metadata:
+      labels:
+        role: 09-np
+      
+    spec:
+      containers:
+      - name: 09-np
+        image: gcr.io/google-samples/hello-app:1.0
+        ports:
+          - containerPort: 8080
+
+---
+apiVersion: v1
+kind: Service
+metadata:
+  name: np-09
+
+spec:
+  type: NodePort
+  ports:
+  - port: 8080
+    targetPort: 8080
+    nodePort: 30000
+  selector:
+    role: 09-np

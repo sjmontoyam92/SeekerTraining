@@ -1,0 +1,11 @@
+# PersistentVolumeClaim.yml
+apiVersion: v1
+kind: PersistentVolumeClaim
+metadata:
+  name: pd-blog-volume-claim
+spec:
+  accessModes:
+  - ReadWriteOnce
+  resources:
+    requests:
+      storage: 10Gi

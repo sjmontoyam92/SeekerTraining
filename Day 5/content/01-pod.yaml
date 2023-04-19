@@ -1,0 +1,11 @@
+apiVersion: v1
+kind: Pod
+metadata:
+  name: 01-pod
+
+spec:
+  containers:
+  - name: 01-pod
+    image: nginx:alpine
+
+# Podemos conectarnos al nodod usando kubectl exec -it 01-pod -- sh

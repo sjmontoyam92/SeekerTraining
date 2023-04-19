@@ -1,0 +1,36 @@
+apiVersion: apps/v1
+kind: StatefulSet
+metadata:
+  name: 05-sful
+
+spec:
+  selector:
+    matchLabels:
+      app: 05-sful
+
+  serviceName: "servicio-fe"
+
+  replicas: 1
+
+  template:
+
+    metadata:
+      labels:
+        app: 05-sful
+
+    spec:
+      containers:
+      - name: 05-sful
+        image: busybox:latest
+        args:
+        - sleep
+        - infinity
+        volumeMounts:
+        - mountPath: "/data"
+          name: pd-blog-volume
+
+      volumes:
+      - name: pd-blog-volume
+        persistentVolumeClaim:
+          claimName: pd-blog-volume-claim
+      
